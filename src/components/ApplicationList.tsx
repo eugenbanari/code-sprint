@@ -28,6 +28,7 @@ const ApplicationList: React.FC = () => {
                 loading={isLoading}
                 showGridlines
                 size="normal"
+                selectionMode="single"
                 paginator={!isLoading}
                 rows={25}
                 rowsPerPageOptions={[25, 50]}
