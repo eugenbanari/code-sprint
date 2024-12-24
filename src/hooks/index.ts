@@ -6,8 +6,8 @@ export const useApps = (params: GetAppsPayload) => {
     return useQuery({ queryKey: ['apps'], queryFn: () => getApps(params) });
 };
 
-export const useAppOverview = (appId: string) => {
-    return useQuery({ queryKey: ['app', appId], queryFn: () => getAppOverview(appId), enabled: Boolean(appId) });
+export const useAppOverview = (appId?: string) => {
+    return useQuery({ queryKey: ['app', appId], queryFn: () => getAppOverview(appId as string), enabled: Boolean(appId) });
 };
 
 export const useAppOverviewUsers = (appId: string) => {

@@ -16,12 +16,14 @@ export type GetAppsPayload = {
     pageSize?: number;
 };
 
-export type AppList = {
+export type App = {
     appId: string;
     appName: string;
     appSources: string[];
     category: string;
-}[];
+};
+
+export type AppList = App[];
 
 export type AppListResponse = {
     appRows: AppList;
