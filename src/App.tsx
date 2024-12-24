@@ -1,17 +1,27 @@
-import viteLogo from '/public/vite.svg';
-import reactLogo from '/public/react.svg';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import React from 'react';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Routes, Route } from 'react-router';
+import NavigationMenu from './components/NavigationMenu';
+import queryClient from './plugins/queryClient';
+
+const ApplicationList = React.lazy(() => import('./components/ApplicationList'))
 
 const App: React.FC = () => {
-    const queryClient = new QueryClient();
     return (
         <QueryClientProvider client={queryClient}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', columnGap: '8px' }}>
-                <img src={viteLogo} alt="Vite Logo" />
-                <img src={reactLogo} alt="React Logo" />
-            </div>
-            <h1>Code Sprint</h1>
-            <p>A frontend project built with React.</p>
+            <BrowserRouter>
+                <NavigationMenu />
+                <React.Suspense fallback={<div>Loading...</div>}>
+                    <Routes>
+                        <Route path="/" element={<ApplicationList />} />
+                        <Route path="/data" element={<div>Data</div>} />
+                        <Route path="/identities" element={<div>Identities</div>}/>
+                        <Route path="/alerts" element={<div>Alerts</div>}/>
+                        <Route path="/investigations" element={<div>Investigations</div>}/>
+                        <Route path="/configurations" element={<div>Configurations</div>}/>
+                    </Routes>
+                </React.Suspense>
+            </BrowserRouter>
         </QueryClientProvider>
     );
 };

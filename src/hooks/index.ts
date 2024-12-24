@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAppOverview, getAppOverviewUsers, getApps } from 'api';
-import { GetAppsPayload } from 'api/types.ts';
+import { getAppOverview, getAppOverviewUsers, getApps } from '../api';
+import { GetAppsPayload } from '../api/types.ts';
 
 export const useApps = (params: GetAppsPayload) => {
     return useQuery({ queryKey: ['apps'], queryFn: () => getApps(params) });
