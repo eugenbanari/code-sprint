@@ -4,6 +4,7 @@ import { AppListResponse, AppOverview, AppUsers, GetAppsPayload } from 'api/type
 const API_CONFIG = {
     headers: {
         Accept: 'application/json',
+        'ngrok-skip-browser-warning': '69420',
     },
 };
 
